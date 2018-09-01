@@ -1,0 +1,81 @@
+.project-container {
+    margin-top: 30px;
+}
+
+.project-header {
+    background-color: #494fd8;
+    height: 30px;
+    padding-top: 5px;
+}
+
+.glyphicon-calendar {
+    color: #18165e;
+}
+
+.project-name {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.glyphicon-pencil, .glyphicon-trash {
+    color: #fff;
+}
+
+.glyphicon-pencil:hover, .glyphicon-trash:hover {
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+}
+
+.create-project {
+    margin-top: 20px;
+}
+.more-info {
+    color: #fff;
+
+}
+
+.more-info:hover {
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+}
+
+.post-container {
+    border:1px solid #000;
+    border-radius: 30px;
+    margin: 20px 0 20px 0;
+}
+
+.post-header {
+    font-size: 17px;
+    padding-top: 3px;
+    background-color: #494fd8;
+    height: 30px;
+    border-radius: 30px 30px 0 0;
+    margin-bottom: 10px;
+
+}
+
+.post-caption {
+    color: #fff;
+    font-weight: 600;
+
+
+}
+
+.post-control {
+    margin-top: 10px;
+    background-color: #494fd8;
+    color: #fff;
+    width: inherit;
+    border-radius: 0 0 30px 30px;
+    height: 25px;
+    padding-top: 4px;
+}
+.task-creating {
+    background-color: rgba(81, 85, 214, 0.67);
+}
+.task-row {
+    margin: 5px 0  ;
+    color: #fff;
+}
