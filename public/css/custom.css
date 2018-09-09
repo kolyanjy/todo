@@ -1,11 +1,19 @@
 .project-container {
-    margin-top: 30px;
+    padding: 0 0 0 0;
 }
-
+.container-c {
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
 .project-header {
-    background-color: #494fd8;
-    height: 30px;
-    padding-top: 5px;
+    background-color: #4679b5;
+    height: 50px;
+    padding-top: 13px;
+
+}
+.p0 {
+  padding: 0;
 }
 
 .glyphicon-calendar {
@@ -26,7 +34,6 @@
     cursor: pointer;
     text-shadow: 1px 1px #fff;
 }
-
 .create-project {
     margin-top: 20px;
 }
@@ -76,6 +83,63 @@
     background-color: rgba(81, 85, 214, 0.67);
 }
 .task-row {
-    margin: 5px 0  ;
-    color: #fff;
+    padding:0  ;
+    margin: 0;
+    color: grey;
+    height: 40px;
+    background-color: #fff;
+}
+.create-task {
+  background-color: #d9d9d9;
+  padding: 6px 0 6px 0;
+
+}
+.glyphicon-plus {
+  font-size: 35px;
+  font-weight: 1000;
+  color: #599072;
+  text-shadow: 0px -1px #637169;
+}
+.navbar-right {
+margin-right: 0;
+}
+.todo {
+    width: 60%;
+    margin: 5% 20% 0 20%;
+    border: 1px solid grey;
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+}
+.todo_create {
+background-color:  #4679b5;
+color: #fff;
+font-weight: 1000;
+
+}
+.task_checkbox {
+  border-right: 1px solid rgba(81, 85, 214, 0.67);
+  height: 100%;
+}
+
+.height_100 {
+  height: 100%;
+  padding-top: 5px;
+}
+.add_task_btn {
+  width: 90%;
+  float: left;
+  background-color: #86bda0;
+  color: #fff;
+  font-weight: 1000;
+  text-shadow: 0px -1px #637169;
+
+}
+.task-gi {
+  color: grey;
+}
+.glyphicon-arrow-up:hover, .glyphicon-arrow-down:hover {
+  cursor: pointer;
+}
+.navbar {
+  margin-bottom: 0;
 }

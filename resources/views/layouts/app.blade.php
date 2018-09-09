@@ -12,8 +12,10 @@
 
     <!-- Styles -->
     {{-- <link href="{{ asset('css/all.min.css') }}" rel="stylesheet"> --}}
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+
 
 
 </head>
@@ -75,7 +77,9 @@
             </div>
         </nav>
 
-        @yield('content')
+                            @include('layouts.alerts')
+                            @yield('content')
+
     </div>
 
     <!-- Scripts -->

@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Projects;
+use App\Project;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectsController extends Controller
 {
+
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+
     public function index() {
-      $projects = Projects::where('user_id', Auth::user()->id)->get();
-      return view('projects/index', ['projects' => $projects]);
+      return view('projects/index', ['projects' => Project::getProjectsWithTasks()]);
     }
 
     public function create ()
@@ -20,27 +25,35 @@ class ProjectsController extends Controller
 
     public function store (Request $request)
     {
-      Projects::create(['name' => $request->name, 'user_id' => Auth::user()->id]);
-      return redirect()->route('projects.index');
+      $this->validate($request, [
+        'name' => 'required|unique:projects|max:127'
+      ]);
+      Project::create(['name' => $request->name, 'user_id' => Auth::user()->id]);
+      return redirect()->route('projects.index')->withSuccess('project created');
     }
 
     public function edit($id)
     {
-        $project = Projects::find($id);
+        $project = Project::find($id);
+        if(!$project) return redirect()->back()->withError('Project not found');
         return view ('projects.edit', ['project' => $project]);
     }
 
     public function update(Request $request, $id)
     {
-        $project = Projects::find($id);
+        $project = Project::find($id);
+        $this->validate($request, [
+          'name' => 'required|unique:projects|max:127'
+        ]);
         $project->name = $request->name;
-        $project->save();
-        return redirect()->route('projects.index');
+        return $project->save()
+          ? redirect()->route('projects.index')->withSuccess('project updated')
+          : redirect()->route('projects.index')->withError('project doesn`t updated');
     }
 
     public function destroy($id)
     {
-      Projects::destroy($id);
-      return redirect()->route('projects.index');
+      Project::destroy($id);
+      return redirect()->route('projects.index')->withSuccess('project removed');
     }
 }
