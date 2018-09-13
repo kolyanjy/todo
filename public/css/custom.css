@@ -137,7 +137,7 @@ font-weight: 1000;
 .task-gi {
   color: grey;
 }
-.glyphicon-arrow-up:hover, .glyphicon-arrow-down:hover {
+.fa-angle-up:hover, .fa-angle-down:hover {
   cursor: pointer;
 }
 .navbar {

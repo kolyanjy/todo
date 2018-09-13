@@ -15,10 +15,32 @@ $(function () {
             $(this).siblings("form").submit();
         });
 
-        $('.task_checkbox').click(function () {
-            var url = "/tasks/change_status/" + $(this).siblings('input[name="task_id"]').val();
+    $('.task_checkbox').click(function () {
+        var url = "/tasks/change_status/" + $(this).siblings('input[name="task_id"]').val();
+        $.post({
+            url: url
+        })
+    });
+
+    $('body').on('click', '.ordering .fa', function () {
+
+      var task =  $(this).closest('.task');
+        var target_id = task.find('input[name=task_id]').val();
+        var target_order = task.find('input[name=order]').val();
+        var direction = $(this).hasClass('fa-angle-up');
+        var replacement = direction ? task.prev() : task.next();
+        var replacement_id = replacement.find('input[name=task_id]').val();
+        var replacement_order = replacement.find('input[name=order]').val();
+        console.log();
+        if (replacement_id) {
             $.post({
-                url: url
-            })
-        });
+                url: '/tasks/order',
+                data: {
+                    target_id: target_id,
+                    replacement_id: replacement_id
+                },
+            });
+        }
+    });
+
 });

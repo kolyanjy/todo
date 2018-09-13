@@ -7,16 +7,16 @@
       <div class="todo">
       <div class="container-fluid project-container">
         <div class="container-c container project-header">
-          <div class="col-md-1"><i class="glyphicon glyphicon-calendar"></i></div>
+          <div class="col-md-1"><i class="fa fa-calendar-alt"></i></div>
           <div class="col-md-9 project-name">{{ $project->name }}</div>
 
           <div class="col-md-1">
             <a href="{{ route('projects.edit', ['id' => $project->id])  }}">
-            <i class="glyphicon glyphicon-pencil"></i>
+            <i class="fa fa-pen"></i>
             </a>
           </div>
           <div class="col-md-1">
-            <i class="glyphicon glyphicon-trash remove-project"></i>
+            <i class="fa fa-trash-alt remove-project"></i>
             <form  action="{{ route('projects.destroy', ['id' => $project->id])  }}" method="post">
               <input type="hidden" name="_method" value="DELETE">
               <input type="hidden" name="_token" value="{{ csrf_token()  }}">
@@ -46,21 +46,22 @@
         </div>
                @foreach($project->tasks as $task)
                  @if($task->project_id == $project->id)
-                 <div class="task-row text-center container-fluid">
+                 <div class="task task-row text-center container-fluid">
                    <div class="col-md-1 task_checkbox">
                        <input type="hidden" name="task_id" value="{{ $task->id }}">
+                       <input type="hidden" name="order" value="{{ $task->order }}">
                        <input type="checkbox" class="task_checkbox" @if($task->status) checked @endif>
                     </div>
                     <div class="col-md-8 height_100">
                         {{ $task->name }}
                      </div>
-                     <div class="col-md-1 height_100">
-                       <i class="glyphicon glyphicon-arrow-up"></i>
-                       <i class="glyphicon glyphicon-arrow-down"></i>
+                     <div class="col-md-1 height_100 ordering">
+                       <i class="fa fa-angle-up"></i>
+                       <i class="fa fa-angle-down"></i>
                      </div>
                       <div class="col-md-1 height_100">
                           <a href="{{ route('tasks.edit', ['id' => $task->id]) }}">
-                              <i class="glyphicon glyphicon-pencil task-gi"></i>
+                              <i class="fa fa-pen task-gi"></i>
                           </a>
                       </div>
                      <div class="col-md-1 height_100">
@@ -68,7 +69,7 @@
                              <input type="hidden" name="_method" value="DELETE">
                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
                          </form>
-                         <i class="glyphicon glyphicon-trash remove-task task-gi"></i>
+                         <i class="fa fa-trash remove-task task-gi"></i>
                       </div>
                  </div>
                  @endif
