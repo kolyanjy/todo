@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Task extends Model
 {
@@ -17,22 +18,23 @@ class Task extends Model
       return $task ? $task->order : 0;
     }
 
-    public static function swapOrder($target_id, $replacement_id)
+    public static function swap_order($target_id, $replacement_id)
     {
       $tasks = self::find([$target_id, $replacement_id]);
-        if (count($tasks) == 2) {
-            $first_task_order = $tasks[0] -> order;
-            $tasks[0] -> order = $tasks[1] -> order;
-            $tasks[1] -> order = $first_task_order;
-            DB::beginTransaction();
-            if (!$tasks[1]->save() || !$tasks[0]->save()) {
-                DB::rollback();
-                return false;
-            }
-            DB::commit();
-            return 1;
-        }
+      if (!count($tasks) == 2) {
         return false;
+      }
+      $first_task_order = $tasks->first()-> order;
+      $tasks->first()-> order = $tasks->last() -> order;
+      $tasks->last() -> order = $first_task_order;
+      DB::beginTransaction();
+      if (!$tasks->last()->save() || !$tasks->first()->save()) {
+        DB::rollback();
+        return false;
+      }
+      DB::commit();
+      return true;
+
     }
 
 }

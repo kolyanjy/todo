@@ -7,7 +7,6 @@ use App\Projects;
 use App\Task;
 use Illuminate\Support\Facedes\Auth;
 
-
 class TasksController extends Controller
 {
 
@@ -60,20 +59,11 @@ class TasksController extends Controller
     $task->save();
   }
 
-  public function change_order(Request $request,$id)
+  public function change_order(Request $request)
   {
-    dd($request);
-    // $tasks = self::find([$target_id, $replacement_id]);
-    //   if (count($tasks) == 2) {
-    //       $first_task_order = $tasks[0] -> order;
-    //       $tasks[0] -> order = $tasks[1] -> order;
-    //       $tasks[1] -> order = $first_task_order;
-    //       DB::beginTransaction();
-    //       if (!$tasks[1]->save() || !$tasks[0]->save()) {
-    //           DB::rollback();
-    //       }
-    //       DB::commit();
-    //       return 1;
-    //   }
+    $result = Task::swap_order($request->target_id, $request->replacement_id);
+    return $result
+      ? redirect()->route('projects.index')->withSuccess('order changed')
+      : redirect()->route('projects.index')->withError('order doesn`t changed');
   }
 }

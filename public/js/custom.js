@@ -31,7 +31,6 @@ $(function () {
         var replacement = direction ? task.prev() : task.next();
         var replacement_id = replacement.find('input[name=task_id]').val();
         var replacement_order = replacement.find('input[name=order]').val();
-        console.log();
         if (replacement_id) {
             $.post({
                 url: '/tasks/order',
@@ -39,6 +38,9 @@ $(function () {
                     target_id: target_id,
                     replacement_id: replacement_id
                 },
+                success(response) {
+                  window.location.href = '/projects'
+                }
             });
         }
     });

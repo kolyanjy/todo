@@ -16,9 +16,9 @@ class Project extends Model
 
     public function tasks()
     {
-      return $this->hasMany('App\Task');
+      return $this->hasMany('App\Task')->orderBy('order');
     }
-    
+
     public static function getProjectsWithTasks()
     {
       return self::where('user_id', Auth::user()->id)->with('tasks')->get();
