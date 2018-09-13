@@ -3,19 +3,38 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Project;
+use App\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
-    {
-        $response = $this->get('/');
+  public function setUp()
+  {
+      parent::setUp();
+      Session::start();
+      // $this->prepareForTests();
+      DB::beginTransaction();
+      $this->user = factory(User::class)->create();
+      $this->be($this->user);
+  }
+  public function testBasicTest()
+  {
+    $response = $this->json(
+        'POST',
+        '/projects',
+        ['name' => 'test']
+    );
+    $this->assertTrue(Project::where('name', 'test')->exists());
+  }
 
-        $response->assertStatus(200);
-    }
+  public function tearDown()
+  {
+      DB::rollback();
+      DB::commit();
+  }
+
 }
