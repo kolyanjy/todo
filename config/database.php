@@ -80,19 +80,19 @@ return [
             'schema' => 'public',
             'sslmode' => 'require',
         ],
-        
-        'pgsql' => [
-      'driver' => 'pgsql',
-        'host' => env('DB_HOST', 'ec2-12-34-56-789.compute-1.amazonaws.com'),
-        'port' => env('DB_PORT', '5432'),
-        'database' => env('DB_DATABASE', 'dbXXXXXXXXXXXX'),
-        'username' => env('DB_USERNAME', 'XXXXXXXXXXXXXX'),
-        'password' => env('DB_PASSWORD', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'),
-        'charset' => 'utf8',
-        'prefix' => '',
-        'schema' => 'public',
-        'sslmode' => 'prefer',
-    ],
+
+    //     'pgsql' => [
+    //   'driver' => 'pgsql',
+    //     'host' => env('DB_HOST', 'ec2-174-129-35-61.compute-1.amazonaws.com'),
+    //     'port' => env('DB_PORT', '5432'),
+    //     'database' => env('DB_DATABASE', 'd48rcs4dsb66ko'),
+    //     'username' => env('DB_USERNAME', 'hhypahkuekkiyg'),
+    //     'password' => env('DB_PASSWORD', '53ccf5922e26a5510eb04e1fd1770ee7e50d805b6c00f7cbb81e6ff840265ec3'),
+    //     'charset' => 'utf8',
+    //     'prefix' => '',
+    //     'schema' => 'public',
+    //     'sslmode' => 'prefer',
+    // ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',

@@ -20,6 +20,7 @@ class ExampleTest extends TestCase
       DB::beginTransaction();
       $this->user = factory(User::class)->create();
       $this->be($this->user);
+
   }
   public function testBasicTest()
   {
@@ -28,7 +29,15 @@ class ExampleTest extends TestCase
         '/projects',
         ['name' => 'test']
     );
-    $this->assertTrue(Project::where('name', 'test')->exists());
+    $this->assertTrue(Project::where('name', 'test')->exists());;
+
+    $this->withoutMiddleware();
+
+       $this->visit('/')
+            ->see('Laravel 5');
+
+    // $this->visit('/projects')->click('Add TODO List')->see('create');
+
   }
 
   public function tearDown()
