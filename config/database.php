@@ -68,7 +68,7 @@ return [
         //     'sslmode' => 'prefer',
         // ],
                 // for heroku settings
-        'pgsql' => [
+        'pgsql' => [  
             'driver' => 'pgsql',
             'host' => $DATABASE_URL["host"],
             'port' => $DATABASE_URL["port"],
