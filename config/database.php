@@ -1,6 +1,6 @@
 <?php
 
-  $DATABASE_URL=parse_url('postgres://hhypahkuekkiyg:53ccf5922e26a5510eb04e1fd1770ee7e50d805b6c00f7cbb81e6ff840265ec3@ec2-174-129-35-61.compute-1.amazonaws.com:5432/d48rcs4dsb66ko');
+  $DATABASE_URL=parse_url('postgres://oovuxlpjxyoxcu:95eca90eb2147f7fead12c25798e084cb99087ec6359eb4361b71fba45b82c0a@ec2-54-83-50-145.compute-1.amazonaws.com:5432/d8marsgdngct9f');
 
 return [
     /*
@@ -68,7 +68,7 @@ return [
         //     'sslmode' => 'prefer',
         // ],
                 // for heroku settings
-        'pgsql' => [  
+        'pgsql' => [
             'driver' => 'pgsql',
             'host' => $DATABASE_URL["host"],
             'port' => $DATABASE_URL["port"],
