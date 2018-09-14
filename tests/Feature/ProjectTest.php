@@ -16,11 +16,17 @@ class ExampleTest extends TestCase
   {
       parent::setUp();
       Session::start();
-      // $this->prepareForTests();
       DB::beginTransaction();
       $this->user = factory(User::class)->create();
       $this->be($this->user);
 
+  }
+
+  public function testApp()
+  {
+    $response = $this->call('GET', '/projects');
+
+    $this->assertEquals(200, $response->status());
   }
   public function testBasicTest()
   {
@@ -29,14 +35,12 @@ class ExampleTest extends TestCase
         '/projects',
         ['name' => 'test']
     );
+
     $this->assertTrue(Project::where('name', 'test')->exists());;
 
     $this->withoutMiddleware();
 
-       $this->visit('/')
-            ->see('Laravel 5');
-
-    // $this->visit('/projects')->click('Add TODO List')->see('create');
+    $this->visit('/projects')->click('Add TODO List')->seePageIs('/create');
 
   }
 
