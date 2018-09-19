@@ -39,7 +39,7 @@ class TasksController extends Controller
   {
      $task = Task::find($id);
      $this->validate($request, [
-       'name' => 'required|unique:Task|max:255'
+       'name' => 'required|max:255'
      ]);
      $task->name = $request->name;
      $task->save();

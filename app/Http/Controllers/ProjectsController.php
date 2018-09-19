@@ -26,7 +26,7 @@ class ProjectsController extends Controller
     public function store (Request $request)
     {
       $this->validate($request, [
-        'name' => 'required|unique:projects|max:127'
+        'name' => 'required|max:255'
       ]);
       Project::create(['name' => $request->name, 'user_id' => Auth::user()->id]);
       return redirect()->route('projects.index')->withSuccess('project created');
@@ -43,7 +43,7 @@ class ProjectsController extends Controller
     {
         $project = Project::find($id);
         $this->validate($request, [
-          'name' => 'required|unique:projects|max:127'
+          'name' => 'required|max:255'
         ]);
         $project->name = $request->name;
         return $project->save()
