@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-  {{-- {{ dd($projects) }}; --}}
     @foreach($projects as $project)
 
       <div class="todo">
@@ -25,7 +24,6 @@
           </div>
         </div>
       </div>
-      {{-- {{ dd($tasks) }}; --}}
 
       <div class="container-c container task-creating">
         <div class="container-c container text-center create-task">
@@ -84,7 +82,11 @@
 
 
     <div class="container-c container text-center create-project">
-        <a href="{{ route('projects.create') }}" class="btn btn-default todo_create">Add TODO List</a>
+        <a href="{{ route('projects.create') }}" class="btn btn-default todo_create">
+          <i class="fa fa-plus"></i><div class="inl-b">
+            Add TODO List
+          </div>
+        </a>
     </div>
 
 @endsection

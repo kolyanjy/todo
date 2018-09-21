@@ -44,5 +44,9 @@ $(function () {
             });
         }
     });
-
+    $(document).ready(function(){
+        var ml=$(".navbar").outerWidth();
+        ml /= 3;
+        $(".navbar-brand").css({"margin-left":ml});
+    });
 });

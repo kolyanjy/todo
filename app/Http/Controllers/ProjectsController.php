@@ -28,8 +28,9 @@ class ProjectsController extends Controller
       $this->validate($request, [
         'name' => 'required|max:255'
       ]);
-      Project::create(['name' => $request->name, 'user_id' => Auth::user()->id]);
-      return redirect()->route('projects.index')->withSuccess('project created');
+      return Project::create(['name' => $request->name, 'user_id' => Auth::user()->id])
+      ? redirect()->route('projects.index')->withSuccess('project created')
+      : redirect()->route('projects.index')->withError('project doesn`t created');
     }
 
     public function edit($id)
@@ -53,7 +54,8 @@ class ProjectsController extends Controller
 
     public function destroy($id)
     {
-      Project::destroy($id);
-      return redirect()->route('projects.index')->withSuccess('project removed');
+      return Project::destroy($id)
+      ? redirect()->route('projects.index')->withSuccess('project deleted')
+      : redirect()->route('projects.index')->withError('project doesn`t deleted');
     }
 }

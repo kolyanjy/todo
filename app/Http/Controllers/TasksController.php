@@ -25,8 +25,9 @@ class TasksController extends Controller
     $task->name = $request->name;
     $task->project_id = $request->project_id;
     $task->order = Task::getLastOrder($request->project_id) + 1;
-    $task->save();
-    return redirect()->route('home')->withSuccess('Task created');
+    return $task->save()
+    ? redirect()->route('home')->withSuccess('Task created')
+    : redirect()->route('home')->withError('Task c doesn`t created');
   }
 
   public function edit($id)
@@ -42,14 +43,16 @@ class TasksController extends Controller
        'name' => 'required|max:255'
      ]);
      $task->name = $request->name;
-     $task->save();
-     return redirect()->route('home')->withSuccess('Task updated');
+     return $task->save()
+     ? redirect()->route('home')->withSuccess('Task updated')
+     : redirect()->route('home')->withError('Task c doesn`t updated');
   }
 
   public function destroy($id)
   {
-    $task = Task::destroy($id);
-    return redirect()->route('home')->withSuccess('Task removed');
+    return $task = Task::destroy($id)
+    ? redirect()->route('home')->withSuccess('Task deleted')
+    : redirect()->route('home')->withError('Task c doesn`t deleted');
   }
 
   public function change_status($id)
