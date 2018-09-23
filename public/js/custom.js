@@ -31,18 +31,22 @@ $(function () {
         var replacement = direction ? task.prev() : task.next();
         var replacement_id = replacement.find('input[name=task_id]').val();
         var replacement_order = replacement.find('input[name=order]').val();
-        if (replacement_id) {
-            $.post({
-                url: '/tasks/order',
-                data: {
-                    target_id: target_id,
-                    replacement_id: replacement_id
-                },
-                success(response) {
-                  window.location.href = '/projects'
-                }
-            });
-        }
+        $('input[name=target_id]').val(target_id);
+        $('input[name=replacement_id]').val(replacement_id);
+        $(this).siblings("form").submit();
+        console.log($(this).siblings("form"));
+        // if (replacement_id) {
+        //     $.post({
+        //         url: '/tasks/order',
+        //         data: {
+        //             target_id: target_id,
+        //             replacement_id: replacement_id
+        //         },
+        //         success(response) {
+        //           window.location.href = '/projects'
+        //         }
+        //     });
+        // }
     });
     $(document).ready(function(){
         var ml=$(".navbar").outerWidth();

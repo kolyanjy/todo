@@ -54,6 +54,11 @@
                         {{ $task->name }}
                      </div>
                      <div class="col-md-1 height_100 ordering">
+                       <form class="" action="{{ route('tasks.order') }}" method="post">
+                         <input type="hidden" name="target_id" value="">
+                         <input type="hidden" name="replacement_id" value="">
+                         <input type="hidden" name="_token" value="{{ csrf_token()  }}">
+                       </form>
                        <i class="fa fa-angle-up"></i>
                        <i class="fa fa-angle-down"></i>
                      </div>
