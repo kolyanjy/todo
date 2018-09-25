@@ -174,3 +174,7 @@ body {
   color: #2d4a6e;
   font-size: 25px;
 }
+.input-edit {
+  width: 70%;
+  margin: 20px auto;
+}
