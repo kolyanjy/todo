@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'ProjectsController@index')->name('home');
+Route::resource('/projects', 'ProjectsController');
+Route::resource('/tasks', 'TasksController');
+Route::post('/tasks/change_status/{id}', 'TasksController@change_status');
+Route::post('/tasks/order', 'TasksController@change_order')->name('tasks.order');

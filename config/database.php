@@ -1,7 +1,8 @@
 <?php
 
-return [
+  $DATABASE_URL=parse_url('postgres://oovuxlpjxyoxcu:95eca90eb2147f7fead12c25798e084cb99087ec6359eb4361b71fba45b82c0a@ec2-54-83-50-145.compute-1.amazonaws.com:5432/d8marsgdngct9f');
 
+return [
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name
@@ -13,7 +14,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -53,19 +54,45 @@ return [
             'strict' => true,
             'engine' => null,
         ],
-
+                  // default settings
+        // 'pgsql' => [
+        //     'driver' => 'pgsql',
+        //     'host' => env('DB_HOST', '127.0.0.1'),
+        //     'port' => env('DB_PORT', '5432'),
+        //     'database' => env('DB_DATABASE', 'forge'),
+        //     'username' => env('DB_USERNAME', 'forge'),
+        //     'password' => env('DB_PASSWORD', ''),
+        //     'charset' => 'utf8',
+        //     'prefix' => '',
+        //     'schema' => 'public',
+        //     'sslmode' => 'prefer',
+        // ],
+                // for heroku settings
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => $DATABASE_URL["host"],
+            'port' => $DATABASE_URL["port"],
+            'database' => ltrim($DATABASE_URL["path"], "/"),
+            'username' => $DATABASE_URL["user"],
+            'password' => $DATABASE_URL["pass"],
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
-            'sslmode' => 'prefer',
+            'sslmode' => 'require',
         ],
+
+    //     'pgsql' => [
+    //   'driver' => 'pgsql',
+    //     'host' => env('DB_HOST', 'ec2-174-129-35-61.compute-1.amazonaws.com'),
+    //     'port' => env('DB_PORT', '5432'),
+    //     'database' => env('DB_DATABASE', 'd48rcs4dsb66ko'),
+    //     'username' => env('DB_USERNAME', 'hhypahkuekkiyg'),
+    //     'password' => env('DB_PASSWORD', '53ccf5922e26a5510eb04e1fd1770ee7e50d805b6c00f7cbb81e6ff840265ec3'),
+    //     'charset' => 'utf8',
+    //     'prefix' => '',
+    //     'schema' => 'public',
+    //     'sslmode' => 'prefer',
+    // ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',

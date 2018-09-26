@@ -1,0 +1,180 @@
+.project-container {
+    padding: 0 0 0 0;
+}
+.container-c {
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
+.project-header {
+    background-color: #4679b5;
+    height: 50px;
+    padding-top: 13px;
+
+}
+.p0 {
+  padding: 0;
+}
+.inl-b {
+  display: inline-block;
+}
+.fa-plus {
+  color: #2d4a6e;
+  font-size: 17px;
+  margin-right: 10px;
+}
+.project-name {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 900;
+}
+.fa-trash-alt {
+  color: #fff;
+}
+.fa-pen, .fa-trash {
+    color: #fff;
+}
+
+.fa-trash-alt:hover, .fa-trash:hover {
+    cursor: pointer;
+}
+.create-project {
+    margin-top: 20px;
+
+}
+.more-info {
+    color: #fff;
+
+}
+
+.more-info:hover {
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+}
+
+.post-container {
+    border:1px solid #000;
+    border-radius: 30px;
+    margin: 20px 0 20px 0;
+}
+
+.post-header {
+    font-size: 17px;
+    padding-top: 3px;
+    background-color: #494fd8;
+    height: 30px;
+    border-radius: 30px 30px 0 0;
+    margin-bottom: 10px;
+
+}
+
+.post-caption {
+    color: #fff;
+    font-weight: 600;
+
+
+}
+
+.post-control {
+    margin-top: 10px;
+    background-color: #494fd8;
+    color: #fff;
+    width: inherit;
+    border-radius: 0 0 30px 30px;
+    height: 25px;
+    padding-top: 4px;
+}
+.task-creating {
+    background-color: rgba(81, 85, 214, 0.67);
+}
+.task-row {
+    padding:0  ;
+    margin: 0;
+    color: grey;
+    height: 40px;
+    background-color: #fff;
+}
+.create-task {
+  background-color: #d9d9d9;
+  padding: 6px 0 6px 0;
+
+}
+.glyphicon-plus {
+  font-size: 35px;
+  font-weight: 1000;
+  color: #599072;
+  text-shadow: 0px -1px #637169;
+}
+.navbar-right {
+margin-right: 0;
+}
+.todo {
+    width: 60%;
+    margin: 5% 20% 0 20%;
+    border: 1px solid grey;
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+}
+.todo_create {
+background-color:  #4679b5;
+color: #fff;
+font-weight: 1000;
+
+}
+.task_checkbox {
+  border-right: 1px solid rgba(81, 85, 214, 0.67);
+  height: 100%;
+}
+
+.height_100 {
+  height: 100%;
+  padding-top: 5px;
+}
+.add_task_btn {
+  width: 90%;
+  float: left;
+  background-color: #86bda0;
+  color: #fff;
+  font-weight: 1000;
+  text-shadow: 0px -1px #637169;
+
+}
+.task-gi {
+  color: grey;
+}
+.fa-angle-up:hover, .fa-angle-down:hover {
+  cursor: pointer;
+}
+.navbar {
+  margin-bottom: 0;
+  background-color: inherit;
+}
+.navbar-brand {
+  color: white;
+  width: 200px;
+  margin-bottom: 20px;
+  font-weight: 900;
+}
+.dropdown-toggle {
+  margin-top: 10px;
+  color: white;
+}
+body {
+  background-image: url(images/Golden-fields.jpg);
+  background-attachment: fixed;
+}
+.navbar-default .navbar-brand, .navbar-nav>li>a, .navbar-default .navbar-text{
+    color: white;
+}
+#dropdown,.navbar-nav>li>a {
+  color: white;
+}
+.fa-calendar-alt {
+  padding-left: 10px;
+  color: #2d4a6e;
+  font-size: 25px;
+}
+.input-edit {
+  width: 70%;
+  margin: 20px auto;
+}

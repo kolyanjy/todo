@@ -1,0 +1,29 @@
+
+1. CREATE TABLE `projects` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255), PRIMARY KEY (`id`))
+
+2. CREATE TABLE `tasks` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) , `status` BOOLEAN  ,
+`project_id` INT , PRIMARY KEY (`id`), FOREIGN KEY(`project_id`) REFERENCES projects(`id`) );
+
+3. SELECT DISTINCT `status` FROM `tasks` ORDER BY `status`;
+
+4. SELECT `projects`.id, COUNT(`tasks`.name) AS task_count FROM `tasks` RIGHT JOIN
+`projects` ON `tasks`.project_id = `projects`.id GROUP BY `projects`.id ORDER BY task_count DESC;
+
+5. SELECT projects.name, COUNT(tasks.name) AS task_count FROM tasks RIGHT JOIN projects
+ON tasks.project_id=projects.id GROUP BY projects.id ORDER BY task_count;
+
+6.SELECT `projects`.name, `tasks`.name FROM tasks INNER JOIN `projects` ON
+`tasks`.project_id=`projects`.id WHERE `tasks`.name LIKE '%n%';
+
+7.SELECT `projects`.name, COUNT(`tasks`.name) AS task_count FROM
+`tasks` RIGHT JOIN `projects` ON `tasks`.project_id = `projects`.id WHERE
+ `projects`.name LIKE '%a%' GROUP BY `projects`.id';
+
+8.SELECT `name` FROM `tasks` WHERE `name` IN (SELECT `name` FROM `tasks` GROUP BY `name` HAVING count(*)>1)
+ORDER BY `name`;
+
+9.SELECT tasks.name FROM `tasks` RIGHT JOIN `projects` ON `tasks`.project_id = `projects`.id
+WHERE projects.name = 'Garage' GROUP BY tasks.name, tasks.status HAVING COUNT(tasks.name)>1;
+
+10.SELECT projects.name FROM tasks RIGHT JOIN projects ON tasks.project_id = projects.id
+WHERE tasks.status = 'completed' GROUP BY projects.id HAVING COUNT(tasks.name)>10 ORDER BY project_id
